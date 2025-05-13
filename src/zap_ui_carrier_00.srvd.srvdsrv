@@ -1,0 +1,5 @@
+@EndUserText.label: 'Behaviour Definition Carrier'
+define service ZAP_UI_CARRIER_00 {
+  expose ZAP_C_CARRIER_00   as carrier;
+  expose ZAP_C_CONNECTION_0 as connection;
+}

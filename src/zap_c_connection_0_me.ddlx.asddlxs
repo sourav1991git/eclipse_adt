@@ -1,0 +1,65 @@
+@Metadata.layer: #CORE
+
+@UI: {
+headerInfo: {
+typeName: 'Connection',
+typeNamePlural: 'Connections',
+title: {
+type: #STANDARD, value: 'Connectionid'
+}
+},
+presentationVariant: [{
+sortOrder: [{
+by: 'Connectionid',
+direction: #ASC
+}],
+visualizations: [{
+type: #AS_LINEITEM
+}]
+}]
+}
+
+annotate entity ZAP_C_CONNECTION_0
+    with 
+{
+
+@UI.facet: [
+{
+label: 'Connection Details',
+id: 'ConnectionInfo',
+type: #COLLECTION,
+position: 10
+},
+{
+label: 'Connection',
+id: 'Connection',
+type: #IDENTIFICATION_REFERENCE,
+purpose: #STANDARD,
+parentId: 'ConnectionInfo',
+position: 10
+}
+]
+
+@UI.lineItem: [ { position: 5 } ]
+@UI.identification: [{ position: 5 }]
+Cuuid;
+@UI.lineItem: [ { position: 6 } ]
+@UI.identification: [{ position: 6 }]
+Cnuid;
+@UI.lineItem: [ { position: 10 } ]
+@UI.identification: [{ position: 10 }]
+Connectionid;
+@UI.lineItem: [ { position: 20 } ]
+@UI.identification: [{ position: 20 }]
+Countryfr;
+@UI.lineItem: [ { position: 30 } ]
+@UI.identification: [{ position: 30 }]
+Cityfrom;
+@UI.lineItem: [ { position: 40 } ]
+@UI.identification: [{ position: 40 }]
+Countryto;
+@UI.lineItem: [ { position: 50 } ]
+@UI.identification: [{ position: 50 }]
+Cityto;
+    
+}

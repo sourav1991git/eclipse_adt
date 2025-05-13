@@ -1,0 +1,70 @@
+@Metadata.layer: #CORE
+
+@UI: {
+headerInfo: {
+typeName: 'Carrier',
+typeNamePlural: 'Carrier',
+title: {
+type: #STANDARD, value: 'Name'
+},
+description: {
+value: 'Carrierid'
+}
+},
+presentationVariant: [{
+sortOrder: [{
+by: 'Name',
+direction: #ASC
+}],
+visualizations: [{
+type: #AS_LINEITEM
+}]
+}]
+}
+
+annotate entity ZAP_C_CARRIER_00
+    with 
+{
+
+@UI.facet: [
+{
+label: 'Carrier Details',
+id: 'CarrierInfo',
+type: #COLLECTION,
+position: 10
+},
+{
+label: 'Carrier',
+id: 'Carrier',
+type: #IDENTIFICATION_REFERENCE,
+purpose: #STANDARD,
+parentId: 'CarrierInfo',
+position: 10
+},
+{
+id: 'Connection',
+purpose: #STANDARD,
+type: #LINEITEM_REFERENCE,
+label: 'Connections',
+position: 20,
+targetElement: '_connection'
+}
+]
+
+@UI.lineItem: [{ position: 5 }]
+@UI.identification: [{ position: 5 }]
+Cuuid;
+@UI.lineItem: [{ position: 10 }]
+@UI.identification: [{ position: 10 }]
+Carrierid;
+@UI.lineItem: [{ position: 20 }]
+@UI.identification: [{ position: 20 }]
+Name;
+@UI.lineItem: [{ position: 30 }]
+@UI.identification: [{ position: 30 }]
+Locallastchangedat;
+@UI.lineItem: [{ position: 40 }]
+@UI.identification: [{ position: 40 }]
+Lastchangedat;
+    
+}

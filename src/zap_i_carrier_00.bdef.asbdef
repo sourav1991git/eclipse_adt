@@ -1,0 +1,35 @@
+managed implementation in class zbp_ap_i_carrier_00 unique;
+strict ( 2 );
+
+define behavior for ZAP_I_CARRIER_00 alias carrier //alias <alias_name>
+persistent table zap_carrier_00
+with additional save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+
+field ( numbering : managed ) Cuuid;
+
+  create;
+  update;
+  delete;
+  field ( readonly ) Cuuid,Locallastchangedat, Lastchangedat;
+  association _connection { create; }
+}
+
+define behavior for ZAP_I_CONNECTION_0 alias connection //alias <alias_name>
+//persistent table zap_connection_0
+with unmanaged save
+lock dependent by _carrier
+authorization dependent by _carrier
+//etag master <field_name>
+{
+
+field ( numbering : managed ) Cnuid;
+
+  update;
+  delete;
+  field ( readonly ) Cuuid,Cnuid,Locallastchangedat, Lastchangedat;
+  association _carrier;
+}
